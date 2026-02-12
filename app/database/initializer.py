@@ -1,11 +1,16 @@
 # Se encarga de crear las tablas y meter datos iniciales la primera vez
 
+import os
 import bcrypt
-from app.config.settings import SCHEMA_PATH
+from app.config.settings import DB_PATH, SCHEMA_PATH
 from app.database.connection import get_connection
 
 
 def initialize_database():
+    # si la base de datos ya existe, no inicializar
+    if os.path.exists(DB_PATH):
+        return
+
     conn = get_connection()
     # leer y ejecutar el .sql con la estructura de tablas
     with open(SCHEMA_PATH, "r", encoding="utf-8") as f:

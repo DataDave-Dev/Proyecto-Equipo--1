@@ -1,4 +1,4 @@
-# Vista principal del CRM (dashboard) - carga el .ui y muestra datos del usuario
+# Vista principal del CRM - carga el .ui y muestra datos del usuario
 
 import os
 from PyQt5.QtWidgets import QMainWindow
