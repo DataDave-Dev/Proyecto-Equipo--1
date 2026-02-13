@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UserForm</class>
+ <widget class="QWidget" name="UserForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+/* === FORM GLOBAL === */
+QWidget#UserForm {
+    background-color: transparent;
+}
+
+/* === LABELS === */
+QLabel#form_titulo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+QLabel#form_subtitulo {
+    font-size: 13px;
+    color: #718096;
+}
+QLabel#seccionPersonal, QLabel#seccionCuenta, QLabel#seccionPermisos {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1a1a2e;
+    padding-top: 8px;
+}
+QLabel.fieldLabel {
+    font-size: 13px;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+/* === INPUTS === */
+QLineEdit, QComboBox {
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background-color: #f7fafc;
+    font-size: 13px;
+    min-height: 34px;
+}
+QLineEdit:focus, QComboBox:focus {
+    border: 1px solid #4a90d9;
+    background-color: white;
+}
+QLineEdit:hover, QComboBox:hover {
+    border: 1px solid #cbd5e0;
+}
+
+/* === CHECKBOX === */
+QCheckBox#check_activo {
+    font-size: 13px;
+    color: #2d3748;
+    spacing: 8px;
+}
+QCheckBox#check_activo::indicator {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 4px;
+    background-color: #f7fafc;
+}
+QCheckBox#check_activo::indicator:checked {
+    background-color: #4a90d9;
+    border-color: #4a90d9;
+}
+QCheckBox#check_activo::indicator:hover {
+    border-color: #cbd5e0;
+}
+
+/* === BUTTONS === */
+QPushButton#btn_guardar {
+    background-color: #4a90d9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 24px;
+    min-height: 38px;
+}
+QPushButton#btn_guardar:hover {
+    background-color: #3a7bc8;
+}
+QPushButton#btn_guardar:pressed {
+    background-color: #2a6bb8;
+}
+QPushButton#btn_limpiar, QPushButton#btn_cancelar {
+    background-color: white;
+    color: #2d3748;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    min-height: 38px;
+}
+QPushButton#btn_limpiar:hover, QPushButton#btn_cancelar:hover {
+    background-color: #f7fafc;
+    border-color: #cbd5e0;
+}
+QPushButton#btn_toggle_password, QPushButton#btn_toggle_confirm {
+    background-color: #f0f2f5;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+QPushButton#btn_toggle_password:hover, QPushButton#btn_toggle_confirm:hover {
+    background-color: #e2e8f0;
+    border: 1px solid #cbd5e0;
+}
+
+/* === SEPARATOR === */
+QFrame#separator1, QFrame#separator2, QFrame#separator3 {
+    color: #e2e8f0;
+}
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="formMainLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollContent">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>780</width>
+        <height>680</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#scrollContent { background-color: transparent; }</string>
+      </property>
+      <layout class="QVBoxLayout" name="scrollLayout">
+       <property name="spacing">
+        <number>12</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
+
+       <!-- HEADER: Titulo y subtitulo -->
+       <item>
+        <widget class="QLabel" name="form_titulo">
+         <property name="text">
+          <string>Nuevo Usuario</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="form_subtitulo">
+         <property name="text">
+          <string>Completa la informacion del nuevo usuario. Los campos con * son obligatorios.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+
+       <!-- SEPARATOR -->
+       <item>
+        <widget class="QFrame" name="separator1">
+         <property name="frameShape">
+          <enum>QFrame::HLine</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+        </widget>
+       </item>
+
+       <!-- SECCION: Informacion Personal -->
+       <item>
+        <widget class="QLabel" name="seccionPersonal">
+         <property name="text">
+          <string>Informacion Personal</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Fila: Nombre / Apellido Paterno -->
+       <item>
+        <layout class="QHBoxLayout" name="row1Layout">
+         <property name="spacing">
+          <number>20</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="nombreLayout">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_nombre">
+             <property name="text">
+              <string>Nombre *</string>
+             </property>
+             <property name="property" stdset="0">
+              <string>fieldLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="input_nombre">
+             <property name="placeholderText">
+              <string>Ingresa el nombre</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="apellidoPLayout">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_apellido_paterno">
+             <property name="text">
+              <string>Apellido Paterno *</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="input_apellido_paterno">
+             <property name="placeholderText">
+              <string>Ingresa el apellido paterno</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+
+       <!-- Fila: Apellido Materno / Telefono -->
+       <item>
+        <layout class="QHBoxLayout" name="row2Layout">
+         <property name="spacing">
+          <number>20</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="apellidoMLayout">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_apellido_materno">
+             <property name="text">
+              <string>Apellido Materno</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="input_apellido_materno">
+             <property name="placeholderText">
+              <string>Ingresa el apellido materno (opcional)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="telefonoLayout">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_telefono">
+             <property name="text">
+              <string>Telefono</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="input_telefono">
+             <property name="placeholderText">
+              <string>10 digitos (opcional)</string>
+             </property>
+             <property name="maxLength">
+              <number>10</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+
+       <!-- SEPARATOR -->
+       <item>
+        <widget class="QFrame" name="separator2">
+         <property name="frameShape">
+          <enum>QFrame::HLine</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+        </widget>
+       </item>
+
+       <!-- SECCION: Informacion de Cuenta -->
+       <item>
+        <widget class="QLabel" name="seccionCuenta">
+         <property name="text">
+          <string>Informacion de Cuenta</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Fila: Email (ancho completo) -->
+       <item>
+        <layout class="QVBoxLayout" name="emailLayout">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_email">
+           <property name="text">
+            <string>Email *</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="input_email">
+           <property name="placeholderText">
+            <string>ejemplo@correo.com</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <!-- Fila: Contrasena / Confirmar Contrasena -->
+       <item>
+        <layout class="QHBoxLayout" name="row4Layout">
+         <property name="spacing">
+          <number>20</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="passwordLayout">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_password">
+             <property name="text">
+              <string>Contrasena *</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="passwordInputLayout">
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="input_password">
+               <property name="placeholderText">
+                <string>Minimo 8 caracteres</string>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_toggle_password">
+               <property name="text">
+                <string>Ver</string>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>38</width>
+                 <height>34</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>38</width>
+                 <height>34</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="confirmPasswordLayout">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_confirm_password">
+             <property name="text">
+              <string>Confirmar Contrasena *</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="confirmInputLayout">
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="input_confirm_password">
+               <property name="placeholderText">
+                <string>Repite la contrasena</string>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_toggle_confirm">
+               <property name="text">
+                <string>Ver</string>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>38</width>
+                 <height>34</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>38</width>
+                 <height>34</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+
+       <!-- SEPARATOR -->
+       <item>
+        <widget class="QFrame" name="separator3">
+         <property name="frameShape">
+          <enum>QFrame::HLine</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+        </widget>
+       </item>
+
+       <!-- SECCION: Permisos y Estado -->
+       <item>
+        <widget class="QLabel" name="seccionPermisos">
+         <property name="text">
+          <string>Permisos y Estado</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Fila: Rol / Estado -->
+       <item>
+        <layout class="QHBoxLayout" name="row5Layout">
+         <property name="spacing">
+          <number>20</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="rolLayout">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_rol">
+             <property name="text">
+              <string>Rol *</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="combo_rol"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="estadoLayout">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_activo">
+             <property name="text">
+              <string>Estado</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="check_activo">
+             <property name="text">
+              <string>Usuario activo</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+
+       <!-- SPACER vertical -->
+       <item>
+        <spacer name="formBottomSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+
+       <!-- BOTONES DE ACCION -->
+       <item>
+        <layout class="QHBoxLayout" name="buttonsLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btn_guardar">
+           <property name="text">
+            <string>Guardar Usuario</string>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_limpiar">
+           <property name="text">
+            <string>Limpiar</string>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_cancelar">
+           <property name="text">
+            <string>Cancelar</string>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="buttonsSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+
+       <!-- SPACER expansivo final -->
+       <item>
+        <spacer name="finalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

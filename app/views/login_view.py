@@ -18,21 +18,8 @@ class LoginView(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi(UI_PATH, self)
-        self._setup_icon()
         self._connect_signals()
         self._center_on_screen()
-
-    def _setup_icon(self):
-        from PyQt5.QtCore import Qt
-        size = 80
-        renderer = QSvgRenderer(ICON_PATH)
-        if renderer.isValid():
-            pixmap = QPixmap(size, size)
-            pixmap.fill(Qt.GlobalColor.transparent)
-            painter = QPainter(pixmap)
-            renderer.render(painter)
-            painter.end()
-            self.iconLabel.setPixmap(pixmap)
 
     def _connect_signals(self):
         self.loginBtn.clicked.connect(self._emit_login)
@@ -56,8 +43,16 @@ class LoginView(QWidget):
         self.loginBtn.setText("Verificando..." if loading else "Iniciar Sesión")
 
     def _center_on_screen(self):
+        # centrar la ventana en la pantalla y ajustar tamaño
         from PyQt5.QtWidgets import QDesktopWidget
         screen = QDesktopWidget().screenGeometry()
-        x = (screen.width() - self.width()) // 2
-        y = (screen.height() - self.height()) // 2
+
+        # ajustar tamaño de la ventana para ocupar mejor el espacio
+        window_width = min(1100, int(screen.width() * 0.8))
+        window_height = min(700, int(screen.height() * 0.85))
+        self.resize(window_width, window_height)
+
+        # centrar en la pantalla
+        x = (screen.width() - window_width) // 2
+        y = (screen.height() - window_height) // 2
         self.move(x, y)

@@ -17,7 +17,8 @@ class Usuario:
         activo=1,
         foto_perfil=None,
         fecha_creacion=None,
-        ultimo_acceso=None
+        ultimo_acceso=None,
+        nombre_rol=None
     ):
         self.usuario_id = usuario_id
         self.nombre = nombre
@@ -31,6 +32,8 @@ class Usuario:
         self.foto_perfil = foto_perfil
         self.fecha_creacion = fecha_creacion or datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.ultimo_acceso = ultimo_acceso
+        # nombre del rol asociado (solo para visualización, no se guarda en BD)
+        self.nombre_rol = nombre_rol
 
     def __repr__(self):
         return f"<Usuario(id={self.usuario_id}, email='{self.email}')>"
