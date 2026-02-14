@@ -1,37 +1,36 @@
-# CRM - Sistema de Gestion de Relaciones con Clientes
+# CRM - Sistema de Gestión de Relaciones con Clientes
 
-Aplicacion de escritorio para la gestion de relaciones con clientes (CRM), desarrollada como proyecto academico para la materia de **Base de Datos y Lenguajes** en la Facultad de Ingeniería Mecanica y Eléctrica (FIME) de la Universidad Autonoma de Nuevo Leon (UANL).
+Aplicación de escritorio para la gestión de relaciones con clientes (CRM), desarrollada como proyecto académico para la materia de **Base de Datos y Lenguajes** en la Facultad de Ingeniería Mecánica y Eléctrica (FIME) de la Universidad Autónoma de Nuevo León (UANL).
 
 ---
 
-## Lenguaje y tecnologias
+## Lenguaje y tecnologías
 
-| Tecnologia | Version | Proposito |
+| Tecnología | Versión | Propósito |
 |---|---|---|
 | Python | 3.x | Lenguaje principal |
-| PyQt5 | 5.15.11 | Framework de interfaz grafica |
+| PyQt5 | 5.15.11 | Framework de interfaz gráfica |
 | SQLite3 | (incluido en Python) | Motor de base de datos |
 | bcrypt | 5.0.0 | Hashing seguro de contraseñas |
 
 ---
 
-## Paradigmas y patrones de diseno
+## Paradigmas y patrones de diseño
 
-- **MVC (Modelo-Vista-Controlador)**: separacion clara entre la logica de negocio, la presentacion y el control del flujo.
-- **Patron Repository**: capa de acceso a datos desacoplada de la logica de negocio.
-- **Arquitectura por capas**: cada capa tiene una responsabilidad unica.
-- **Singleton**: conexion a base de datos reutilizable a nivel global.
-- **Generacion dinamica de UI**: los formularios de catalogos se construyen en tiempo de ejecucion a partir de configuracion centralizada.
-- **Signal-Slot (PyQt5)**: comunicacion desacoplada entre componentes de la interfaz.
+- **MVC (Modelo-Vista-Controlador)**: separación clara entre la lógica de negocio, la presentación y el control del flujo.
+- **Patrón Repository**: capa de acceso a datos desacoplada de la lógica de negocio.
+- **Arquitectura por capas**: cada capa tiene una responsabilidad única.
+- **Singleton**: conexión a base de datos reutilizable a nivel global.
+- **Signal-Slot (PyQt5)**: comunicación desacoplada entre componentes de la interfaz.
 
 ### Flujo de capas
 
 ```
-Views (Presentacion)
+Views (Presentación)
     |
 Controllers (Control de flujo)
     |
-Services (Logica de negocio)
+Services (Lógica de negocio)
     |
 Repositories (Acceso a datos)
     |
@@ -44,14 +43,14 @@ Database (SQLite)
 
 ```
 Proyecto Equipo #1/
-├── app/                            # Paquete principal de la aplicacion
+├── app/                            # Paquete principal de la aplicación
 │   ├── assets/                     # Iconos SVG para la interfaz
-│   ├── config/                     # Configuracion de la app y catalogos
+│   ├── config/                     # Configuración de la app y catálogos
 │   │   ├── settings.py
 │   │   └── catalogos.py
 │   ├── database/                   # Capa de base de datos
-│   │   ├── connection.py           # Conexion singleton a SQLite
-│   │   └── initializer.py         # Creacion de esquema y datos iniciales
+│   │   ├── connection.py           # Conexión singleton a SQLite
+│   │   └── initializer.py         # Creación de esquema y datos iniciales
 │   ├── models/                     # Modelos de datos
 │   │   ├── Usuario.py
 │   │   ├── Rol.py
@@ -60,14 +59,14 @@ Proyecto Equipo #1/
 │   │   ├── usuario_repository.py
 │   │   ├── rol_repository.py
 │   │   └── catalogo_repository.py
-│   ├── services/                   # Capa de logica de negocio
+│   ├── services/                   # Capa de lógica de negocio
 │   │   ├── auth_service.py
 │   │   ├── usuario_service.py
 │   │   └── catalogo_service.py
 │   ├── controllers/                # Controladores MVC
 │   │   ├── login_controller.py
 │   │   └── main_controller.py
-│   └── views/                      # Vistas e interfaz grafica
+│   └── views/                      # Vistas e interfaz gráfica
 │       ├── ui/                     # Archivos .ui (Qt Designer)
 │       ├── login_view.py
 │       ├── main_view.py
@@ -79,8 +78,8 @@ Proyecto Equipo #1/
 │   ├── database_query.sql          # Esquema completo (60+ tablas)
 │   └── crm.db                     # Archivo SQLite generado
 ├── tests/                          # Pruebas (pendiente)
-├── Docs/                           # Documentacion del proyecto
-├── main.py                         # Punto de entrada de la aplicacion
+├── Docs/                           # Documentación del proyecto
+├── main.py                         # Punto de entrada de la aplicación
 ├── requirements.txt                # Dependencias de Python
 └── README.md
 ```
@@ -89,29 +88,29 @@ Proyecto Equipo #1/
 
 ## Base de datos
 
-El esquema SQLite contiene **mas de 60 tablas**, 7 vistas, triggers e indices. A continuacion los modulos principales:
+El esquema SQLite contiene **más de 60 tablas**, 7 vistas, triggers e índices. A continuación los módulos principales:
 
-| Modulo | Tablas principales | Descripcion |
+| Módulo | Tablas principales | Descripción |
 |---|---|---|
-| Usuarios | `Usuarios`, `Roles` | Autenticacion y control de acceso |
-| Contactos | `Empresas`, `Contactos` | Gestion de cuentas y personas |
+| Usuarios | `Usuarios`, `Roles` | Autenticación y control de acceso |
+| Contactos | `Empresas`, `Contactos` | Gestión de cuentas y personas |
 | Ventas | `Oportunidades`, `Cotizaciones`, `Productos` | Pipeline comercial |
 | Actividades | `Actividades`, `TiposActividad` | Llamadas, reuniones, tareas |
-| Campañas | `Campanas`, `Segmentos`, `Etiquetas` | Marketing y segmentacion |
-| Geografia | `Paises`, `Estados`, `Ciudades` | Jerarquia geografica |
-| Catalogos | `Industrias`, `Monedas`, `Prioridades`, etc. | Tablas de configuracion |
-| Auditoria | `LogAuditoria`, `Notificaciones` | Trazabilidad y alertas |
+| Campañas | `Campanas`, `Segmentos`, `Etiquetas` | Marketing y segmentación |
+| Geografía | `Paises`, `Estados`, `Ciudades` | Jerarquía geográfica |
+| Catálogos | `Industrias`, `Monedas`, `Prioridades`, etc. | Tablas de configuración |
+| Auditoría | `LogAuditoria`, `Notificaciones` | Trazabilidad y alertas |
 
-### Caracteristicas de la BD
+### Características de la BD
 
-- Claves foraneas con integridad referencial
-- Triggers para timestamps automaticos, historial de etapas y auditoria
-- Vistas precalculadas para reportes (pipeline, rendimiento, conversion)
+- Claves foráneas con integridad referencial
+- Triggers para timestamps automáticos, historial de etapas y auditoría
+- Vistas precalculadas para reportes (pipeline, rendimiento, conversión)
 - Modo WAL para mejor rendimiento concurrente
 
 ---
 
-## Instalacion y ejecucion
+## Instalación y ejecución
 
 ```bash
 # Clonar el repositorio
@@ -120,50 +119,50 @@ git clone <url-del-repositorio>
 # Instalar dependencias
 pip install -r requirements.txt
 
-# Ejecutar la aplicacion
+# Ejecutar la aplicación
 python main.py
 ```
 
-La base de datos se crea automaticamente en la primera ejecucion con datos iniciales precargados (roles, catalogos, datos geograficos y un usuario administrador).
+La base de datos se crea automáticamente en la primera ejecución con datos iniciales precargados (roles, catálogos, datos geográficos y un usuario administrador).
 
 ### Credenciales por defecto
 
 | Campo | Valor |
 |---|---|
 | Email | `admin@crm.com` |
-| Contrasena | `admin123` |
+| Contraseña | `admin123` |
 
 ---
 
-## Modulos implementados
+## Módulos implementados
 
-- [x] Autenticacion (login con bcrypt)
-- [x] Gestion de usuarios (CRUD completo)
-- [x] Gestion de catalogos generica (13 tipos de catalogo)
-- [x] Jerarquia geografica (Paises, Estados, Ciudades)
-- [x] Configuracion con navegacion por pestañas
-- [ ] Gestion de contactos y empresas
+- [x] Autenticación (login con bcrypt)
+- [x] Gestión de usuarios (CRUD completo)
+- [x] Gestión de catálogos genérica (13 tipos de catálogo)
+- [x] Jerarquía geográfica (Paises, Estados, Ciudades)
+- [x] Configuración con navegación por pestañas
+- [ ] Gestión de contactos y empresas
 - [ ] Pipeline de oportunidades
-- [ ] Gestion de actividades
+- [ ] Gestión de actividades
 - [ ] Campañas de marketing
 - [ ] Reportes y dashboards
-- [ ] Gestion de documentos
+- [ ] Gestión de documentos
 - [ ] Recordatorios y notificaciones
 
 ---
 
 ## Validaciones
 
-- Correo electronico con formato valido (regex)
-- Telefono de 10 digitos
-- Contraseña minimo 8 caracteres
+- Correo electrónico con formato válido (regex)
+- Teléfono de 10 dígitos
+- Contraseña mínimo 8 caracteres
 - Campos requeridos y restricciones de unicidad
-- Proteccion contra eliminacion de registros referenciados
+- Protección contra eliminación de registros referenciados
 
 ---
 
 ## Equipo
 
-Proyecto academico - **Equipo #1**
+Proyecto académico - **Equipo #1**
 Materia: Base de Datos y Lenguajes | FIME | UANL
-Catedrático: M.C. Jorge Alejandro Lozano Gonzalez
+Catedrático: M.C. Jorge Alejandro Lozano González

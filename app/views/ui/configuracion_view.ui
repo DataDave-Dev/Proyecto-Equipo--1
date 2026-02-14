@@ -155,6 +155,221 @@ QTabWidget#finanzasSubTabs QTabBar::tab:hover {
      <property name="currentIndex">
       <number>0</number>
      </property>
+
+     <!-- ==================== TAB: VENTAS ==================== -->
+     <widget class="QWidget" name="tabVentas">
+      <attribute name="title">
+       <string>Ventas</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="tabVentasLayout">
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+       <item>
+        <widget class="QTabWidget" name="ventasSubTabs">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+
+         <!-- Sub-tab: Etapas de Venta -->
+         <widget class="QWidget" name="tabEtapasVenta">
+          <attribute name="title">
+           <string>Etapas de Venta</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="tabEtapasVentaLayout">
+           <property name="leftMargin"><number>0</number></property>
+           <property name="topMargin"><number>0</number></property>
+           <property name="rightMargin"><number>0</number></property>
+           <property name="bottomMargin"><number>0</number></property>
+          </layout>
+         </widget>
+
+         <!-- Sub-tab: Motivos de Perdida -->
+         <widget class="QWidget" name="tabMotivosPerdida">
+          <attribute name="title">
+           <string>Motivos de Perdida</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="tabMotivosPerdidaLayout">
+           <property name="leftMargin"><number>0</number></property>
+           <property name="topMargin"><number>0</number></property>
+           <property name="rightMargin"><number>0</number></property>
+           <property name="bottomMargin"><number>0</number></property>
+          </layout>
+         </widget>
+
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- ==================== TAB: ACTIVIDADES ==================== -->
+     <widget class="QWidget" name="tabActividades">
+      <attribute name="title">
+       <string>Actividades</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="tabActividadesLayout">
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+       <item>
+        <widget class="QTabWidget" name="actividadesSubTabs">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+
+         <!-- Sub-tab: Tipos de Actividad -->
+         <widget class="QWidget" name="tabTiposActividad">
+          <attribute name="title">
+           <string>Tipos de Actividad</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="tabTiposActividadLayout">
+           <property name="leftMargin"><number>0</number></property>
+           <property name="topMargin"><number>0</number></property>
+           <property name="rightMargin"><number>0</number></property>
+           <property name="bottomMargin"><number>0</number></property>
+          </layout>
+         </widget>
+
+         <!-- Sub-tab: Prioridades -->
+         <widget class="QWidget" name="tabPrioridades">
+          <attribute name="title">
+           <string>Prioridades</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="tabPrioridadesLayout">
+           <property name="leftMargin"><number>0</number></property>
+           <property name="topMargin"><number>0</number></property>
+           <property name="rightMargin"><number>0</number></property>
+           <property name="bottomMargin"><number>0</number></property>
+          </layout>
+         </widget>
+
+         <!-- Sub-tab: Estados de Actividad -->
+         <widget class="QWidget" name="tabEstadosActividad">
+          <attribute name="title">
+           <string>Estados de Actividad</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="tabEstadosActividadLayout">
+           <property name="leftMargin"><number>0</number></property>
+           <property name="topMargin"><number>0</number></property>
+           <property name="rightMargin"><number>0</number></property>
+           <property name="bottomMargin"><number>0</number></property>
+          </layout>
+         </widget>
+
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- ==================== TAB: CONTACTOS ==================== -->
+     <widget class="QWidget" name="tabContactos">
+      <attribute name="title">
+       <string>Contactos</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="tabContactosLayout">
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+       <item>
+        <widget class="QTabWidget" name="contactosSubTabs">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+
+         <!-- Sub-tab: Industrias -->
+         <widget class="QWidget" name="tabIndustrias">
+          <attribute name="title">
+           <string>Industrias</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="tabIndustriasLayout">
+           <property name="leftMargin"><number>0</number></property>
+           <property name="topMargin"><number>0</number></property>
+           <property name="rightMargin"><number>0</number></property>
+           <property name="bottomMargin"><number>0</number></property>
+          </layout>
+         </widget>
+
+         <!-- Sub-tab: Tamanos de Empresa -->
+         <widget class="QWidget" name="tabTamanosEmpresa">
+          <attribute name="title">
+           <string>Tamanos de Empresa</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="tabTamanosEmpresaLayout">
+           <property name="leftMargin"><number>0</number></property>
+           <property name="topMargin"><number>0</number></property>
+           <property name="rightMargin"><number>0</number></property>
+           <property name="bottomMargin"><number>0</number></property>
+          </layout>
+         </widget>
+
+         <!-- Sub-tab: Origenes de Contacto -->
+         <widget class="QWidget" name="tabOrigenesContacto">
+          <attribute name="title">
+           <string>Origenes de Contacto</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="tabOrigenesContactoLayout">
+           <property name="leftMargin"><number>0</number></property>
+           <property name="topMargin"><number>0</number></property>
+           <property name="rightMargin"><number>0</number></property>
+           <property name="bottomMargin"><number>0</number></property>
+          </layout>
+         </widget>
+
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- ==================== TAB: FINANZAS ==================== -->
+     <widget class="QWidget" name="tabFinanzas">
+      <attribute name="title">
+       <string>Finanzas</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="tabFinanzasLayout">
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+       <item>
+        <widget class="QTabWidget" name="finanzasSubTabs">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+
+         <!-- Sub-tab: Monedas -->
+         <widget class="QWidget" name="tabMonedas">
+          <attribute name="title">
+           <string>Monedas</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="tabMonedasLayout">
+           <property name="leftMargin"><number>0</number></property>
+           <property name="topMargin"><number>0</number></property>
+           <property name="rightMargin"><number>0</number></property>
+           <property name="bottomMargin"><number>0</number></property>
+          </layout>
+         </widget>
+
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- ==================== TAB: GEOGRAFIA ==================== -->
+     <widget class="QWidget" name="tabGeografia">
+      <attribute name="title">
+       <string>Geografia</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="tabGeografiaLayout">
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+      </layout>
+     </widget>
+
     </widget>
    </item>
 
