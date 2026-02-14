@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GeografiaWidget</class>
+ <widget class="QWidget" name="GeografiaWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+/* === GLOBAL === */
+QWidget#GeografiaWidget {
+    background-color: transparent;
+}
+
+/* === HEADER === */
+QLabel#geoTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+QLabel#geoSubtitle {
+    font-size: 13px;
+    color: #7f8c9b;
+}
+
+/* === PANEL TITLES === */
+QLabel.panelTitle {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1a1a2e;
+    border: none;
+}
+QLabel.panelSubtitle {
+    font-size: 12px;
+    color: #718096;
+    border: none;
+}
+
+/* === PANELS === */
+QFrame.geoPanel {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+/* === BUTTONS === */
+QPushButton.btnAdd {
+    background-color: #4a90d9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    min-height: 30px;
+}
+QPushButton.btnAdd:hover {
+    background-color: #3a7bc8;
+}
+QPushButton.btnEdit {
+    background-color: white;
+    color: #2d3748;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 6px 14px;
+    min-height: 30px;
+}
+QPushButton.btnEdit:hover {
+    background-color: #f7fafc;
+    border-color: #cbd5e0;
+}
+QPushButton.btnDelete {
+    background-color: #f56565;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 6px 14px;
+    min-height: 30px;
+}
+QPushButton.btnDelete:hover {
+    background-color: #e53e3e;
+}
+
+/* === TABLES === */
+QTableWidget.geoTable {
+    background-color: white;
+    border: none;
+    gridline-color: #f0f2f5;
+    font-size: 13px;
+}
+QTableWidget.geoTable QHeaderView::section {
+    background-color: #f7fafc;
+    color: #2d3748;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #e2e8f0;
+}
+QTableWidget.geoTable::item {
+    padding: 8px;
+    color: #2d3748;
+    border-bottom: 1px solid #f0f2f5;
+}
+QTableWidget.geoTable::item:selected {
+    background-color: #ebf8ff;
+    color: #2c5282;
+}
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>16</number>
+   </property>
+
+   <!-- HEADER -->
+   <item>
+    <layout class="QVBoxLayout" name="titleLayout">
+     <property name="spacing">
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="geoTitle">
+       <property name="text">
+        <string>Geografia</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="geoSubtitle">
+       <property name="text">
+        <string>Gestiona paises, estados y ciudades del sistema</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- TRES PANELES -->
+   <item>
+    <layout class="QHBoxLayout" name="panelsLayout">
+     <property name="spacing">
+      <number>12</number>
+     </property>
+
+     <!-- PANEL PAISES -->
+     <item>
+      <widget class="QFrame" name="paisPanel">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="property" stdset="0">
+        <string>geoPanel</string>
+       </property>
+       <layout class="QVBoxLayout" name="paisPanelLayout">
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <property name="leftMargin">
+         <number>12</number>
+        </property>
+        <property name="topMargin">
+         <number>12</number>
+        </property>
+        <property name="rightMargin">
+         <number>12</number>
+        </property>
+        <property name="bottomMargin">
+         <number>12</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="paisTitle">
+          <property name="text">
+           <string>Paises</string>
+          </property>
+          <property name="property" stdset="0">
+           <string>panelTitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="paisSubtitle">
+          <property name="text">
+           <string>Selecciona un registro</string>
+          </property>
+          <property name="property" stdset="0">
+           <string>panelSubtitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="paisBtnsLayout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="btnNuevoPais">
+            <property name="text">
+             <string>+ Nuevo</string>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="property" stdset="0">
+             <string>btnAdd</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEditarPais">
+            <property name="text">
+             <string>Editar</string>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="property" stdset="0">
+             <string>btnEdit</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEliminarPais">
+            <property name="text">
+             <string>Eliminar</string>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="property" stdset="0">
+             <string>btnDelete</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="paisBtnsSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tablaPaises">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="property" stdset="0">
+           <string>geoTable</string>
+          </property>
+          <column>
+           <property name="text">
+            <string>ID</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Nombre</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ISO</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+
+     <!-- PANEL ESTADOS -->
+     <item>
+      <widget class="QFrame" name="estadoPanel">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="property" stdset="0">
+        <string>geoPanel</string>
+       </property>
+       <layout class="QVBoxLayout" name="estadoPanelLayout">
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <property name="leftMargin">
+         <number>12</number>
+        </property>
+        <property name="topMargin">
+         <number>12</number>
+        </property>
+        <property name="rightMargin">
+         <number>12</number>
+        </property>
+        <property name="bottomMargin">
+         <number>12</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="estadoTitle">
+          <property name="text">
+           <string>Estados</string>
+          </property>
+          <property name="property" stdset="0">
+           <string>panelTitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="estadoSubtitle">
+          <property name="text">
+           <string>Selecciona un registro</string>
+          </property>
+          <property name="property" stdset="0">
+           <string>panelSubtitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="estadoBtnsLayout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="btnNuevoEstado">
+            <property name="text">
+             <string>+ Nuevo</string>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="property" stdset="0">
+             <string>btnAdd</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEditarEstado">
+            <property name="text">
+             <string>Editar</string>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="property" stdset="0">
+             <string>btnEdit</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEliminarEstado">
+            <property name="text">
+             <string>Eliminar</string>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="property" stdset="0">
+             <string>btnDelete</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="estadoBtnsSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tablaEstados">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="property" stdset="0">
+           <string>geoTable</string>
+          </property>
+          <column>
+           <property name="text">
+            <string>ID</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Nombre</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+
+     <!-- PANEL CIUDADES -->
+     <item>
+      <widget class="QFrame" name="ciudadPanel">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="property" stdset="0">
+        <string>geoPanel</string>
+       </property>
+       <layout class="QVBoxLayout" name="ciudadPanelLayout">
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <property name="leftMargin">
+         <number>12</number>
+        </property>
+        <property name="topMargin">
+         <number>12</number>
+        </property>
+        <property name="rightMargin">
+         <number>12</number>
+        </property>
+        <property name="bottomMargin">
+         <number>12</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="ciudadTitle">
+          <property name="text">
+           <string>Ciudades</string>
+          </property>
+          <property name="property" stdset="0">
+           <string>panelTitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="ciudadSubtitle">
+          <property name="text">
+           <string>Selecciona un registro</string>
+          </property>
+          <property name="property" stdset="0">
+           <string>panelSubtitle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ciudadBtnsLayout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="btnNuevaCiudad">
+            <property name="text">
+             <string>+ Nuevo</string>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="property" stdset="0">
+             <string>btnAdd</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEditarCiudad">
+            <property name="text">
+             <string>Editar</string>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="property" stdset="0">
+             <string>btnEdit</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEliminarCiudad">
+            <property name="text">
+             <string>Eliminar</string>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="property" stdset="0">
+             <string>btnDelete</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="ciudadBtnsSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tablaCiudades">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="property" stdset="0">
+           <string>geoTable</string>
+          </property>
+          <column>
+           <property name="text">
+            <string>ID</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Nombre</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+
+    </layout>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

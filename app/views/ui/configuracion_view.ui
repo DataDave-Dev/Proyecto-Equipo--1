@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConfigView</class>
+ <widget class="QWidget" name="ConfigView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+/* === GLOBAL === */
+QWidget#ConfigView {
+    background-color: transparent;
+}
+
+/* === HEADER === */
+QLabel#configTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+QLabel#configSubtitle {
+    font-size: 13px;
+    color: #7f8c9b;
+}
+
+/* === TABS PRINCIPALES (CATEGORIAS) === */
+QTabWidget#categoriasTabs {
+    background-color: transparent;
+    border: none;
+}
+QTabWidget#categoriasTabs::pane {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+}
+QTabWidget#categoriasTabs QTabBar::tab {
+    background-color: #f7fafc;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding: 14px 28px;
+    margin-right: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 120px;
+    min-height: 20px;
+}
+QTabWidget#categoriasTabs QTabBar::tab:selected {
+    background-color: white;
+    color: #4a90d9;
+}
+QTabWidget#categoriasTabs QTabBar::tab:hover {
+    background-color: #edf2f7;
+}
+
+/* === SUB-TABS (CATALOGOS) === */
+QTabWidget#ventasSubTabs,
+QTabWidget#actividadesSubTabs,
+QTabWidget#contactosSubTabs,
+QTabWidget#finanzasSubTabs {
+    background-color: transparent;
+    border: none;
+}
+QTabWidget#ventasSubTabs::pane,
+QTabWidget#actividadesSubTabs::pane,
+QTabWidget#contactosSubTabs::pane,
+QTabWidget#finanzasSubTabs::pane {
+    background-color: transparent;
+    border: none;
+    padding-top: 12px;
+}
+QTabWidget#ventasSubTabs QTabBar::tab,
+QTabWidget#actividadesSubTabs QTabBar::tab,
+QTabWidget#contactosSubTabs QTabBar::tab,
+QTabWidget#finanzasSubTabs QTabBar::tab {
+    background-color: transparent;
+    color: #718096;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 12px 20px;
+    margin-right: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 140px;
+    min-height: 18px;
+}
+QTabWidget#ventasSubTabs QTabBar::tab:selected,
+QTabWidget#actividadesSubTabs QTabBar::tab:selected,
+QTabWidget#contactosSubTabs QTabBar::tab:selected,
+QTabWidget#finanzasSubTabs QTabBar::tab:selected {
+    background-color: transparent;
+    color: #2d3748;
+    border-bottom: 3px solid #4a90d9;
+    font-weight: 600;
+}
+QTabWidget#ventasSubTabs QTabBar::tab:hover,
+QTabWidget#actividadesSubTabs QTabBar::tab:hover,
+QTabWidget#contactosSubTabs QTabBar::tab:hover,
+QTabWidget#finanzasSubTabs QTabBar::tab:hover {
+    color: #2d3748;
+}
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>16</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+
+   <!-- HEADER -->
+   <item>
+    <layout class="QVBoxLayout" name="headerLayout">
+     <property name="spacing">
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="configTitle">
+       <property name="text">
+        <string>Configuracion</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="configSubtitle">
+       <property name="text">
+        <string>Administra los catalogos del sistema</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- TABS POR CATEGORIAS -->
+   <item>
+    <widget class="QTabWidget" name="categoriasTabs">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -10,6 +10,7 @@ from PyQt5.QtCore import QSize
 from PyQt5 import uic
 from app.services.usuario_service import UsuarioService
 from app.repositories.rol_repository import RolRepository
+from app.views.configuracion_view import ConfiguracionView
 
 UI_PATH = os.path.join(os.path.dirname(__file__), "ui", "main_view.ui")
 ASSETS_PATH = os.path.join(os.path.dirname(__file__), "..", "assets")
@@ -29,6 +30,7 @@ class MainView(QMainWindow):
         self._setup_navigation()
         self._create_lista_usuarios()
         self._create_form_usuarios()
+        self._create_configuracion()
 
     def _setup_icons(self):
         logout_icon = QIcon(os.path.join(ASSETS_PATH, "logout.svg"))
@@ -61,6 +63,7 @@ class MainView(QMainWindow):
             self.btnUsuarios.clicked.connect(self._mostrar_seccion_usuarios)
         if hasattr(self, 'btnConfiguracion'):
             self.sidebar_buttons.append(self.btnConfiguracion)
+            self.btnConfiguracion.clicked.connect(self._mostrar_seccion_configuracion)
 
     def _resaltar_boton_activo(self, boton_activo):
         # resetear el estilo de todos los botones del sidebar
@@ -458,3 +461,19 @@ class MainView(QMainWindow):
         self.check_activo.setChecked(True)
         # enfocar el primer campo
         self.input_nombre.setFocus()
+
+    def _create_configuracion(self):
+        self.configuracion_widget = ConfiguracionView()
+        self.configuracion_widget.hide()
+
+    def _mostrar_seccion_configuracion(self):
+        self._ocultar_contenido_actual()
+
+        if self.configuracion_widget.parent() != self.contentArea:
+            self.contentLayout.addWidget(self.configuracion_widget)
+
+        self.configuracion_widget.show()
+        self.headerPageTitle.setText("Configuracion")
+
+        if hasattr(self, 'btnConfiguracion'):
+            self._resaltar_boton_activo(self.btnConfiguracion)
