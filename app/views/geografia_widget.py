@@ -30,7 +30,7 @@ class GeografiaWidget(QWidget):
         # configurar headers de tablas
         self._setup_table_headers()
 
-        # conectar señales de seleccion
+        # conectar senales de seleccion
         self.tablaPaises.clicked.connect(self._on_pais_selected)
         self.tablaEstados.clicked.connect(self._on_estado_selected)
 
@@ -50,32 +50,14 @@ class GeografiaWidget(QWidget):
         self.btnEliminarCiudad.clicked.connect(self._on_eliminar_ciudad)
 
     def _setup_table_headers(self):
-        # tabla paises
-        h_header = self.tablaPaises.horizontalHeader()
-        h_header.setSectionResizeMode(QHeaderView.Stretch)
-        h_header.setSectionResizeMode(0, QHeaderView.Fixed)
-        self.tablaPaises.setColumnWidth(0, 50)
-        v_header = self.tablaPaises.verticalHeader()
-        v_header.setVisible(False)
-        v_header.setDefaultSectionSize(36)
-
-        # tabla estados
-        h_header = self.tablaEstados.horizontalHeader()
-        h_header.setSectionResizeMode(QHeaderView.Stretch)
-        h_header.setSectionResizeMode(0, QHeaderView.Fixed)
-        self.tablaEstados.setColumnWidth(0, 50)
-        v_header = self.tablaEstados.verticalHeader()
-        v_header.setVisible(False)
-        v_header.setDefaultSectionSize(36)
-
-        # tabla ciudades
-        h_header = self.tablaCiudades.horizontalHeader()
-        h_header.setSectionResizeMode(QHeaderView.Stretch)
-        h_header.setSectionResizeMode(0, QHeaderView.Fixed)
-        self.tablaCiudades.setColumnWidth(0, 50)
-        v_header = self.tablaCiudades.verticalHeader()
-        v_header.setVisible(False)
-        v_header.setDefaultSectionSize(36)
+        for tabla in [self.tablaPaises, self.tablaEstados, self.tablaCiudades]:
+            h_header = tabla.horizontalHeader()
+            h_header.setSectionResizeMode(QHeaderView.Stretch)
+            h_header.setSectionResizeMode(0, QHeaderView.Fixed)
+            tabla.setColumnWidth(0, 50)
+            v_header = tabla.verticalHeader()
+            v_header.setVisible(False)
+            v_header.setDefaultSectionSize(36)
 
     def cargar_datos(self):
         self._cargar_paises()
@@ -94,7 +76,6 @@ class GeografiaWidget(QWidget):
             self.tablaPaises.setItem(row, 1, QTableWidgetItem(getattr(item, 'Nombre', '')))
             self.tablaPaises.setItem(row, 2, QTableWidgetItem(getattr(item, 'CodigoISO', '') or ''))
 
-        # limpiar paneles dependientes
         self._selected_pais_id = None
         self._selected_estado_id = None
         self.tablaEstados.setRowCount(0)
@@ -113,7 +94,6 @@ class GeografiaWidget(QWidget):
             self.tablaEstados.setItem(row, 0, QTableWidgetItem(str(item.id)))
             self.tablaEstados.setItem(row, 1, QTableWidgetItem(getattr(item, 'Nombre', '')))
 
-        # limpiar ciudades
         self._selected_estado_id = None
         self.tablaCiudades.setRowCount(0)
 

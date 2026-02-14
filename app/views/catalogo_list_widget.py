@@ -1,4 +1,4 @@
-# Widget reutilizable para listar y gestionar cualquier catalogo
+# Widget para listar y gestionar catalogos - carga .ui especifico por catalogo
 
 import os
 from PyQt5.QtWidgets import (
@@ -10,47 +10,39 @@ from PyQt5 import uic
 from app.services.catalogo_service import CatalogoService
 from app.views.catalogo_form_dialog import CatalogoFormDialog
 
-UI_PATH = os.path.join(os.path.dirname(__file__), "ui", "catalogo_list.ui")
+UI_DIR = os.path.join(os.path.dirname(__file__), "ui")
 
 
 class CatalogoListWidget(QWidget):
 
     def __init__(self, config, parent=None):
         super().__init__(parent)
-        uic.loadUi(UI_PATH, self)
+
+        # cargar el .ui especifico del catalogo
+        ui_file = config.get('ui_list')
+        ui_path = os.path.join(UI_DIR, ui_file)
+        uic.loadUi(ui_path, self)
+
         self._config = config
         self._service = CatalogoService(config)
         self._items = []
         self._setup_ui()
 
     def _setup_ui(self):
-        # actualizar textos dinamicamente
-        display_name = self._config['display_name']
-        self.listTitle.setText(f"Gestion de {display_name}")
-        self.listSubtitle.setText(f"Administra el catalogo de {display_name.lower()}")
-        self.statLabel.setText(f"Total {display_name}")
-
-        # conectar señales
+        # conectar senales
         self.btnNuevo.clicked.connect(self._on_nuevo)
         self.tablaCatalogo.doubleClicked.connect(self._on_editar)
 
-        # configurar tabla dinamicamente
-        columns = self._config['columns']
-        col_count = len(columns) + 2  # +1 para ID, +1 para acciones
-
-        self.tablaCatalogo.setColumnCount(col_count)
-
-        headers = ["ID"]
-        for col in columns:
-            headers.append(col['label'])
-        headers.append("Acciones")
-        self.tablaCatalogo.setHorizontalHeaderLabels(headers)
-
+        # configurar headers de la tabla
         h_header = self.tablaCatalogo.horizontalHeader()
         h_header.setSectionResizeMode(QHeaderView.Stretch)
-        # hacer la columna de acciones mas pequena
+
+        col_count = self.tablaCatalogo.columnCount()
+
+        # columna acciones mas pequena
         h_header.setSectionResizeMode(col_count - 1, QHeaderView.Fixed)
         self.tablaCatalogo.setColumnWidth(col_count - 1, 100)
+
         # columna ID mas pequena
         h_header.setSectionResizeMode(0, QHeaderView.Fixed)
         self.tablaCatalogo.setColumnWidth(0, 60)
@@ -86,7 +78,7 @@ class CatalogoListWidget(QWidget):
 
                 cell = QTableWidgetItem(value_str)
 
-                # mostrar preview de color si es una columna tipo color
+                # preview de color si es columna tipo color
                 if col_config.get('type') == 'color' and value:
                     c = QColor(value)
                     if c.isValid():

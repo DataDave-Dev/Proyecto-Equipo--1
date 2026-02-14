@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PaisesForm</class>
+ <widget class="QDialog" name="PaisesForm">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>420</width><height>280</height></rect></property>
+  <property name="windowTitle"><string>Nuevo Pais</string></property>
+  <property name="styleSheet"><string notr="true">
+QDialog { background-color: white; }
+QLabel#dialogTitle { font-size: 18px; font-weight: bold; color: #1a1a2e; }
+QLineEdit { padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; background-color: #f7fafc; font-size: 13px; min-height: 34px; }
+QLineEdit:focus { border: 1px solid #4a90d9; background-color: white; }
+QLineEdit:hover { border: 1px solid #cbd5e0; }
+QPushButton#btnGuardar { background-color: #4a90d9; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; padding: 10px 24px; min-height: 38px; }
+QPushButton#btnGuardar:hover { background-color: #3a7bc8; }
+QPushButton#btnCancelar { background-color: white; color: #2d3748; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px; font-weight: 500; padding: 10px 20px; min-height: 38px; }
+QPushButton#btnCancelar:hover { background-color: #f7fafc; border-color: #cbd5e0; }
+  </string></property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing"><number>12</number></property>
+   <property name="leftMargin"><number>24</number></property><property name="topMargin"><number>24</number></property><property name="rightMargin"><number>24</number></property><property name="bottomMargin"><number>24</number></property>
+   <item><widget class="QLabel" name="dialogTitle"><property name="text"><string>Nuevo Pais</string></property></widget></item>
+   <item><widget class="QFrame" name="separator"><property name="frameShape"><enum>QFrame::HLine</enum></property><property name="styleSheet"><string>color: #e2e8f0;</string></property></widget></item>
+   <item><widget class="QLabel" name="label_Nombre"><property name="text"><string>Nombre *</string></property><property name="styleSheet"><string>font-size: 13px; color: #2d3748; font-weight: 600;</string></property></widget></item>
+   <item><widget class="QLineEdit" name="input_Nombre"><property name="placeholderText"><string>Ingresa nombre</string></property></widget></item>
+   <item><widget class="QLabel" name="label_CodigoISO"><property name="text"><string>Codigo ISO</string></property><property name="styleSheet"><string>font-size: 13px; color: #2d3748; font-weight: 600;</string></property></widget></item>
+   <item><widget class="QLineEdit" name="input_CodigoISO"><property name="placeholderText"><string>Ingresa codigo ISO</string></property></widget></item>
+   <item><spacer name="verticalSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeType"><enum>QSizePolicy::Fixed</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>8</height></size></property></spacer></item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonLayout">
+     <item><widget class="QPushButton" name="btnGuardar"><property name="text"><string>Guardar</string></property><property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property></widget></item>
+     <item><widget class="QPushButton" name="btnCancelar"><property name="text"><string>Cancelar</string></property><property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property></widget></item>
+     <item><spacer name="buttonSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

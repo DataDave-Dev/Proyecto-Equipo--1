@@ -1,5 +1,5 @@
-# Configuracion centralizada de todos los catalogos del sistema
-# Cada catalogo define su tabla, columnas, validaciones y relaciones
+# Configuración centralizada de todos los catálogos del sistema
+# Cada catálogo define su tabla, columnas, validaciones y relaciones
 
 CATALOGO_CONFIGS = {
     # --- Ventas ---
@@ -9,12 +9,15 @@ CATALOGO_CONFIGS = {
         'display_name': 'Etapas de Venta',
         'display_name_singular': 'Etapa de Venta',
         'category': 'Ventas',
+        'ui_list': 'etapas_venta_list.ui',
+        'ui_form': 'etapas_venta_form.ui',
+        'tab_layout': 'tabEtapasVentaLayout',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
             {'name': 'Orden', 'label': 'Orden', 'required': True, 'type': 'int'},
             {'name': 'Probabilidad', 'label': 'Probabilidad (%)', 'required': False, 'type': 'float'},
             {'name': 'Color', 'label': 'Color', 'required': False, 'type': 'color'},
-            {'name': 'Descripcion', 'label': 'Descripcion', 'required': False, 'type': 'text'},
+            {'name': 'Descripcion', 'label': 'Descripción', 'required': False, 'type': 'text'},
         ],
         'unique_column': 'Nombre',
         'order_by': 'Orden',
@@ -25,12 +28,15 @@ CATALOGO_CONFIGS = {
     'motivos_perdida': {
         'table': 'MotivosPerdida',
         'id_column': 'MotivoID',
-        'display_name': 'Motivos de Perdida',
-        'display_name_singular': 'Motivo de Perdida',
+        'display_name': 'Motivos de Pérdida',
+        'display_name_singular': 'Motivo de Pérdida',
         'category': 'Ventas',
+        'ui_list': 'motivos_perdida_list.ui',
+        'ui_form': 'motivos_perdida_form.ui',
+        'tab_layout': 'tabMotivosPerdidaLayout',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
-            {'name': 'Descripcion', 'label': 'Descripcion', 'required': False, 'type': 'text'},
+            {'name': 'Descripcion', 'label': 'Descripción', 'required': False, 'type': 'text'},
         ],
         'unique_column': 'Nombre',
         'order_by': 'Nombre',
@@ -46,6 +52,9 @@ CATALOGO_CONFIGS = {
         'display_name': 'Tipos de Actividad',
         'display_name_singular': 'Tipo de Actividad',
         'category': 'Actividades',
+        'ui_list': 'tipos_actividad_list.ui',
+        'ui_form': 'tipos_actividad_form.ui',
+        'tab_layout': 'tabTiposActividadLayout',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
             {'name': 'Icono', 'label': 'Icono', 'required': False, 'type': 'text'},
@@ -63,6 +72,9 @@ CATALOGO_CONFIGS = {
         'display_name': 'Prioridades',
         'display_name_singular': 'Prioridad',
         'category': 'Actividades',
+        'ui_list': 'prioridades_list.ui',
+        'ui_form': 'prioridades_form.ui',
+        'tab_layout': 'tabPrioridadesLayout',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
             {'name': 'Nivel', 'label': 'Nivel', 'required': True, 'type': 'int'},
@@ -80,6 +92,9 @@ CATALOGO_CONFIGS = {
         'display_name': 'Estados de Actividad',
         'display_name_singular': 'Estado de Actividad',
         'category': 'Actividades',
+        'ui_list': 'estados_actividad_list.ui',
+        'ui_form': 'estados_actividad_form.ui',
+        'tab_layout': 'tabEstadosActividadLayout',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
         ],
@@ -97,9 +112,12 @@ CATALOGO_CONFIGS = {
         'display_name': 'Industrias',
         'display_name_singular': 'Industria',
         'category': 'Contactos',
+        'ui_list': 'industrias_list.ui',
+        'ui_form': 'industrias_form.ui',
+        'tab_layout': 'tabIndustriasLayout',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
-            {'name': 'Descripcion', 'label': 'Descripcion', 'required': False, 'type': 'text'},
+            {'name': 'Descripcion', 'label': 'Descripción', 'required': False, 'type': 'text'},
         ],
         'unique_column': 'Nombre',
         'order_by': 'Nombre',
@@ -110,13 +128,16 @@ CATALOGO_CONFIGS = {
     'tamanos_empresa': {
         'table': 'TamanosEmpresa',
         'id_column': 'TamanoID',
-        'display_name': 'Tamanos de Empresa',
-        'display_name_singular': 'Tamano de Empresa',
+        'display_name': 'Tamaños de Empresa',
+        'display_name_singular': 'Tamaño de Empresa',
         'category': 'Contactos',
+        'ui_list': 'tamanos_empresa_list.ui',
+        'ui_form': 'tamanos_empresa_form.ui',
+        'tab_layout': 'tabTamanosEmpresaLayout',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
             {'name': 'RangoEmpleados', 'label': 'Rango de Empleados', 'required': False, 'type': 'text'},
-            {'name': 'Descripcion', 'label': 'Descripcion', 'required': False, 'type': 'text'},
+            {'name': 'Descripcion', 'label': 'Descripción', 'required': False, 'type': 'text'},
         ],
         'unique_column': 'Nombre',
         'order_by': 'Nombre',
@@ -127,12 +148,15 @@ CATALOGO_CONFIGS = {
     'origenes_contacto': {
         'table': 'OrigenesContacto',
         'id_column': 'OrigenID',
-        'display_name': 'Origenes de Contacto',
+        'display_name': 'Orígenes de Contacto',
         'display_name_singular': 'Origen de Contacto',
         'category': 'Contactos',
+        'ui_list': 'origenes_contacto_list.ui',
+        'ui_form': 'origenes_contacto_form.ui',
+        'tab_layout': 'tabOrigenesContactoLayout',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
-            {'name': 'Descripcion', 'label': 'Descripcion', 'required': False, 'type': 'text'},
+            {'name': 'Descripcion', 'label': 'Descripción', 'required': False, 'type': 'text'},
         ],
         'unique_column': 'Nombre',
         'order_by': 'Nombre',
@@ -150,10 +174,13 @@ CATALOGO_CONFIGS = {
         'display_name': 'Monedas',
         'display_name_singular': 'Moneda',
         'category': 'Finanzas',
+        'ui_list': 'monedas_list.ui',
+        'ui_form': 'monedas_form.ui',
+        'tab_layout': 'tabMonedasLayout',
         'columns': [
-            {'name': 'Codigo', 'label': 'Codigo', 'required': True, 'type': 'text'},
+            {'name': 'Codigo', 'label': 'Código', 'required': True, 'type': 'text'},
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
-            {'name': 'Simbolo', 'label': 'Simbolo', 'required': False, 'type': 'text'},
+            {'name': 'Simbolo', 'label': 'Símbolo', 'required': False, 'type': 'text'},
         ],
         'unique_column': 'Codigo',
         'order_by': 'Codigo',
@@ -165,16 +192,17 @@ CATALOGO_CONFIGS = {
     },
 }
 
-# Configuracion separada para catalogos geograficos (cascada)
+# Configuración separada para catálogos geográficos (cascada)
 GEOGRAFIA_CONFIGS = {
     'paises': {
         'table': 'Paises',
         'id_column': 'PaisID',
-        'display_name': 'Paises',
-        'display_name_singular': 'Pais',
+        'display_name': 'Países',
+        'display_name_singular': 'País',
+        'ui_form': 'paises_form.ui',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
-            {'name': 'CodigoISO', 'label': 'Codigo ISO', 'required': False, 'type': 'text'},
+            {'name': 'CodigoISO', 'label': 'Código ISO', 'required': False, 'type': 'text'},
         ],
         'unique_column': 'Nombre',
         'order_by': 'Nombre',
@@ -187,6 +215,7 @@ GEOGRAFIA_CONFIGS = {
         'id_column': 'EstadoID',
         'display_name': 'Estados',
         'display_name_singular': 'Estado',
+        'ui_form': 'estados_geo_form.ui',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
         ],
@@ -204,6 +233,7 @@ GEOGRAFIA_CONFIGS = {
         'id_column': 'CiudadID',
         'display_name': 'Ciudades',
         'display_name_singular': 'Ciudad',
+        'ui_form': 'ciudades_form.ui',
         'columns': [
             {'name': 'Nombre', 'label': 'Nombre', 'required': True, 'type': 'text'},
         ],
@@ -219,11 +249,11 @@ GEOGRAFIA_CONFIGS = {
     },
 }
 
-# Orden de categorias para el sub-sidebar
+# Orden de categorías para los tabs principales
 CATEGORIAS_ORDEN = [
     'Ventas',
     'Actividades',
     'Contactos',
     'Finanzas',
-    'Geografia',
+    'Geografía',
 ]
